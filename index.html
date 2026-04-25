@@ -830,6 +830,43 @@
             flex-wrap: wrap;
         }
 
+        /* ─── Beyond Work ─── */
+        .beyond-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .beyond-grid img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            transition: transform 0.3s;
+        }
+
+        .beyond-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        .beyond-caption {
+            margin-top: 20px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .beyond-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .beyond-grid img {
+                height: 240px;
+            }
+        }
+
         /* ─── Footer ─── */
         .footer {
             border-top: 1px solid var(--border);
@@ -1294,6 +1331,24 @@
                 <div class="comm-desc">Individualized math instruction for Boston Public School students, adapting teaching strategies to diverse learning styles.</div>
             </div>
         </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Beyond Work -->
+    <section class="section" id="beyond">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-label">Off the Clock</div>
+                <h2 class="section-title">Beyond Work</h2>
+            </div>
+        </div>
+        <div class="beyond-grid fade-up">
+            <img src="latte1.jpg" alt="Coffee latte art">
+            <img src="latte2.jpg" alt="Matcha latte art">
+            <img src="latte3.jpg" alt="Coffee latte art">
+        </div>
+        <p class="beyond-caption fade-up">When I'm not analyzing data, I'm perfecting latte art.</p>
     </section>
 
     <div class="section-divider"></div>
