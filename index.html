@@ -831,6 +831,23 @@
         }
 
         /* ─── Beyond Work ─── */
+        .beyond-group {
+            margin-bottom: 40px;
+        }
+
+        .beyond-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .beyond-group-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
         .beyond-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -849,8 +866,16 @@
             transform: scale(1.02);
         }
 
+        .beyond-grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .beyond-grid-4 img {
+            height: 240px;
+        }
+
         .beyond-caption {
-            margin-top: 20px;
+            margin-top: 24px;
             font-size: 15px;
             color: var(--text-secondary);
             text-align: center;
@@ -864,6 +889,10 @@
 
             .beyond-grid img {
                 height: 240px;
+            }
+
+            .beyond-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -1343,12 +1372,29 @@
                 <h2 class="section-title">Beyond Work</h2>
             </div>
         </div>
-        <div class="beyond-grid fade-up">
-            <img src="latte1.jpg" alt="Coffee latte art">
-            <img src="latte2.jpg" alt="Matcha latte art">
-            <img src="latte3.jpg" alt="Coffee latte art">
+        <div class="beyond-group fade-up">
+            <div class="beyond-group-title">Latte Art</div>
+            <div class="beyond-grid">
+                <img src="latte1.jpg" alt="Coffee latte art">
+                <img src="latte2.jpg" alt="Matcha latte art">
+                <img src="latte3.jpg" alt="Coffee latte art">
+            </div>
         </div>
-        <p class="beyond-caption fade-up">When I'm not analyzing data, I'm perfecting latte art.</p>
+        <div class="beyond-group fade-up">
+            <div class="beyond-group-title">Cooking &amp; Sharing Food</div>
+            <div class="beyond-grid beyond-grid-4">
+                <img src="cooking180.jpg" alt="Homemade dumplings three ways">
+                <img src="cooking183.jpg" alt="Fresh pasta carbonara">
+                <img src="cooking182.jpg" alt="Fluffy omelette with scallions">
+                <img src="cooking181.jpg" alt="Grilled lamb chop with rice">
+            </div>
+            <div class="beyond-grid beyond-grid-4" style="margin-top:16px">
+                <img src="cooking175.jpg" alt="Penne with bacon and cheese">
+                <img src="cooking184.jpg" alt="Scrambled eggs on arugula toast">
+                <img src="cooking185.jpg" alt="Crispy dumpling pancake">
+            </div>
+        </div>
+        <p class="beyond-caption fade-up">When I'm not analyzing data, I'm perfecting latte art and cooking for friends.</p>
     </section>
 
     <div class="section-divider"></div>
