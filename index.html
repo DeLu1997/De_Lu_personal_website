@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Lu &mdash; Financial Literacy, Fraud Strategy &amp; Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+            background: transparent;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --text: #0d0c22;
+            --text-secondary: #6e6d7a;
+            --text-tertiary: #9e9ea7;
+            --accent: #0d0c22;
+            --accent-hover: #3d3d4e;
+            --border: #e7e7e9;
+            --card-bg: #f8f8f8;
+            --card-hover: #f1f0f5;
+            --tag-bg: #f3f3f4;
+            --tag-text: #6e6d7a;
+            --pink: #ea4c89;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+        }
+
+        ::selection {
+            background: rgba(255, 218, 121, 0.5);
+            color: #0d0c22;
+        }
+
+        html {
+            height: 100%;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 28px;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ─── Nav ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 72px;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: 1px solid transparent;
+            transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+        }
+
+        .nav.scrolled {
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--text);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--text-secondary);
+        }
+
+        .nav.scrolled .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 24px;
+            background: rgba(255,255,255,0.12) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            color: #fff !important;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: rgba(255,255,255,0.2) !important;
+        }
+
+        .nav.scrolled .nav-cta {
+            background: var(--accent) !important;
+            border-color: var(--accent) !important;
+            color: #fff !important;
+        }
+
+        .nav.scrolled .nav-cta:hover {
+            background: var(--accent-hover) !important;
+            border-color: var(--accent-hover) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+
+        .nav.scrolled .hamburger span {
+            background: var(--text);
+        }
+
+        /* ─── Hero ─── */
+        .hero-wrapper {
+            position: relative;
+            background: #000000 !important;
+            overflow: hidden;
+        }
+
+        #tsparticles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 40%, transparent 70%) !important;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-gradient-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), rgba(255,255,255,0.15), transparent) !important;
+            z-index: 3;
+        }
+
+        .hero-gradient-line-glow {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), rgba(255,255,255,0.08), transparent) !important;
+            filter: blur(4px);
+            z-index: 3;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 40px 100px;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.08) !important;
+            border: 1px solid rgba(255,255,255,0.12) !important;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e !important;
+            box-shadow: 0 0 8px rgba(34,197,94,0.5);
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2.5px;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        .hero-title .highlight {
+            color: #ffffff;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.55);
+            max-width: 520px;
+            margin-bottom: 36px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 28px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-dark {
+            background: var(--accent) !important;
+            color: #fff;
+        }
+
+        .btn-dark:hover {
+            background: var(--accent-hover) !important;
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            background: transparent !important;
+            color: var(--text);
+            border: 1.5px solid var(--border) !important;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--text) !important;
+            transform: translateY(-1px);
+        }
+
+        .hero-wrapper .btn-dark {
+            background: #fff !important;
+            color: #0d0c22;
+        }
+
+        .hero-wrapper .btn-dark:hover {
+            background: rgba(255,255,255,0.9) !important;
+            box-shadow: 0 4px 20px rgba(255,255,255,0.2);
+        }
+
+        .hero-wrapper .btn-ghost {
+            background: transparent !important;
+            color: rgba(255,255,255,0.85);
+            border: 1.5px solid rgba(255,255,255,0.2) !important;
+        }
+
+        .hero-wrapper .btn-ghost:hover {
+            border-color: rgba(255,255,255,0.5) !important;
+            color: #fff;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .hero-photo img {
+            width: 360px;
+            height: 420px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .hero-photo .float-card {
+            position: absolute;
+            bottom: -20px;
+            left: -30px;
+            background: #fff !important;
+            border-radius: 14px;
+            padding: 14px 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .float-card .fc-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #fee2e2 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .float-card .fc-label {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        .float-card .fc-value {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        /* ─── Stats bar ─── */
+        .stats-bar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
+
+        .stats-inner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border) !important;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .stat-item {
+            background: var(--card-bg) !important;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        /* ─── Sections ─── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+        }
+
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border) !important;
+            margin: 0 40px;
+            max-width: 1120px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ─── Experience ─── */
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .exp-card {
+            background: var(--card-bg) !important;
+            border-radius: var(--radius);
+            padding: 36px 40px;
+            transition: background 0.2s;
+            cursor: default;
+        }
+
+        .exp-card:hover {
+            background: var(--card-hover) !important;
+        }
+
+        .exp-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .exp-role {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .exp-date {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            background: var(--tag-bg) !important;
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .exp-company {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+
+        .exp-bullets li {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .exp-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--border) !important;
+        }
+
+        /* ─── Education ─── */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .edu-card {
+            background: var(--card-bg) !important;
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-card:hover {
+            background: var(--card-hover) !important;
+            transform: translateY(-2px);
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .edu-card:nth-child(1)::before { background: var(--text) !important; }
+        .edu-card:nth-child(2)::before { background: #7c3aed !important; }
+        .edu-card:nth-child(3)::before { background: #ea4c89 !important; }
+        .edu-card:nth-child(4)::before { background: #f59e0b !important; }
+
+        .edu-school {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+        }
+
+        .edu-degree {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .edu-meta {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        .edu-detail {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ─── Skills ─── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .skill-group {
+            background: var(--card-bg) !important;
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+
+        .skill-group-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 14px;
+            background: #fff !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            border-color: var(--text) !important;
+            color: var(--text);
+        }
+
+        /* ─── Research / Teaching ─── */
+        .research-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .research-card {
+            background: var(--card-bg) !important;
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: background 0.2s;
+        }
+
+        .research-card:hover {
+            background: var(--card-hover) !important;
+        }
+
+        .research-type {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .research-type.pub { background: var(--text) !important; }
+        .research-type.teach { background: #7c3aed !important; }
+
+        .research-title {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .research-meta {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* ─── Community ─── */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .comm-card {
+            background: var(--card-bg) !important;
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            transition: all 0.25s;
+        }
+
+        .comm-card:hover {
+            background: var(--card-hover) !important;
+            transform: translateY(-2px);
+        }
+
+        .comm-org {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            margin-bottom: 2px;
+        }
+
+        .comm-role {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            margin-bottom: 10px;
+        }
+
+        .comm-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ─── Awards ─── */
+        .awards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .award-card {
+            background: var(--card-bg) !important;
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.25s;
+        }
+
+        .award-card:hover {
+            background: var(--card-hover) !important;
+            transform: translateY(-1px);
+        }
+
+        .award-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .award-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .award-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ─── Contact ─── */
+        .contact-section {
+            text-align: center;
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+
+        .contact-desc {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        /* ─── Animations ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column-reverse;
+                padding: 120px 24px 60px;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 42px;
+                letter-spacing: -1.5px;
+            }
+
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-photo img {
+                width: 260px;
+                height: 300px;
+                margin: 0 auto;
+            }
+
+            .hero-photo .float-card {
+                bottom: -14px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-inner {
+                padding: 0 24px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: rgba(0,0,0,0.95) !important;
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 12px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav.scrolled .nav-links {
+                background: rgba(255,255,255,0.98) !important;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .section {
+                padding: 60px 24px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .edu-grid,
+            .skills-grid,
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exp-top {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .contact-title {
+                font-size: 36px;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+                padding: 24px;
+            }
+
+            .stats-bar, .section {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 34px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">De Lu</a>
+            <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#contact" class="nav-cta">Contact Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero-wrapper">
+    <div id="tsparticles"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-gradient-line"></div>
+    <div class="hero-gradient-line-glow"></div>
+    <section class="hero">
+        <div class="hero-content fade-up">
+            <h1 class="hero-title">
+                Financial Literacy,<br>
+                Fraud Strategy &amp; <span class="highlight">Analytics.</span>
+            </h1>
+            <p class="hero-desc">I'm De Lu &mdash; based in Boston, previously lived in Chicago, Dallas, and across the U.S., as well as Shanghai and Hamburg. A risk analytics leader at Citizens Financial Group and incoming M.S. candidate at Harvard, I bring a global perspective to everything I do.</p>
+            <div class="hero-actions">
+                <a href="mailto:delu@gse.harvard.edu" class="btn btn-dark">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Get in Touch
+                </a>
+                <a href="https://www.linkedin.com/in/de-lu/" target="_blank" class="btn btn-ghost">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+        <div class="hero-photo fade-up">
+            <img src="headshot.png" alt="De Lu">
+        </div>
+    </section>
+
+    </div><!-- /hero-wrapper -->
+
+    <!-- Stats -->
+    <div class="stats-bar fade-up">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Degrees / Institutions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Community Orgs</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Experience -->
+    <section class="section" id="experience">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-label">Career</div>
+                <h2 class="section-title">Experience</h2>
+            </div>
+        </div>
+        <div class="exp-list">
+
+            <div class="exp-card fade-up">
+                <div class="exp-top">
+                    <div class="exp-role">Risk Analytics Manager, AVP</div>
+                    <span class="exp-date">Jul 2025 &ndash; Present</span>
+                </div>
+                <div class="exp-company">Citizens Financial Group &mdash; Fraud Strategy &amp; Analytics &mdash; Boston, MA</div>
+                <ul class="exp-bullets">
+                    <li>Architect and deploy real-time fraud detection rules within FICO Falcon, preventing ~$3&ndash;4M in fraud losses per month across debit/credit card and digital payment channels serving 5M+ U.S. consumers.</li>
+                    <li>Design fraud controls across voice biometrics (Pindrop), digital identity intelligence (ThreatMetrix), and behavioral authentication (Entersekt) for coordinated defense across call center, digital, and payment ecosystems.</li>
+                    <li>Produce actionable fraud intelligence&mdash;transaction mappings, behavioral indicators, fund-flow pathways&mdash;to support internal investigations and federal law enforcement referrals.</li>
+                    <li>Lead escalation for complex, high-value fraud events (&gt;$5K), conducting root-cause forensic analysis and implementing targeted detection strategies.</li>
+                    <li>Analyze large-scale datasets using SQL, SAS, Python, and AWS Redshift to identify emerging fraud typologies (ATO, synthetic identity, mule networks).</li>
+                    <li>Build executive dashboards (Tableau) for real-time risk visibility, regulatory oversight, and audit readiness.</li>
+                    <li>Conduct Business Initiative Risk Assessments (BIRA) for new products and customer journeys, embedding preventative controls prior to launch.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card fade-up">
+                <div class="exp-top">
+                    <div class="exp-role">Senior Strategy Consultant, AVP</div>
+                    <span class="exp-date">Sep 2022 &ndash; Jul 2025</span>
+                </div>
+                <div class="exp-company">Citizens Financial Group &mdash; Consumer Banking Strategy &mdash; Boston, MA</div>
+                <ul class="exp-bullets">
+                    <li>Designed and operationalized the Consumer Divisional Scorecard, a unified measurement framework across customer, financial, risk, and operational metrics for senior leadership.</li>
+                    <li>Led monthly performance reporting across Consumer Lending, Deposits, Contact Center, Sales, Digital, Wealth Management, and Private Bank using SQL and Tableau.</li>
+                    <li>Directed competitive intelligence and market benchmarking using S&amp;P Capital IQ, BAI, Argus, and Finalta, informing executive strategy and competitive positioning.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card fade-up">
+                <div class="exp-top">
+                    <div class="exp-role">Senior Business Analyst, AVP</div>
+                    <span class="exp-date">May 2021 &ndash; Sep 2022</span>
+                </div>
+                <div class="exp-company">Citizens Financial Group &mdash; Mortgage Strategy &amp; Analytics &mdash; Boston, MA</div>
+                <ul class="exp-bullets">
+                    <li>Designed reporting frameworks and interactive Tableau dashboards to track sales, operational performance, and customer behavior for lending leadership.</li>
+                    <li>Leveraged SQL and advanced analytics to evaluate business drivers and performance trends, driving process improvements and revenue growth.</li>
+                    <li>Owned the full data lifecycle from querying and aggregation to visualization, producing high-impact outputs for sales and operations leadership.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card fade-up">
+                <div class="exp-top">
+                    <div class="exp-role">Senior Financial Analyst</div>
+                    <span class="exp-date">Feb 2020 &ndash; May 2021</span>
+                </div>
+                <div class="exp-company">Caliber Home Loans &mdash; Corporate Strategy &mdash; Dallas, TX</div>
+                <ul class="exp-bullets">
+                    <li>Delivered financial analysis and reporting directly to the CFO and executive team, providing data-driven recommendations for enterprise-level decision-making.</li>
+                    <li>Led month-end close, variance analysis, budgeting, and forecasting across Production, Servicing, and Corporate divisions.</li>
+                    <li>Built advanced financial models for forecasting, cost-benefit analysis, and performance projections to evaluate investment decisions and operational strategies.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Education -->
+    <section class="section" id="education">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-label">Academic</div>
+                <h2 class="section-title">Education</h2>
+            </div>
+        </div>
+        <div class="edu-grid">
+            <div class="edu-card fade-up">
+                <div class="edu-school">Harvard University</div>
+                <div class="edu-degree">M.S. in Learning Design, Innovation &amp; Technology</div>
+                <div class="edu-meta">Cambridge, MA &middot; 2026 &ndash; 2028</div>
+                <div class="edu-detail">HGSE Scholarship Grant (~40% of tuition)</div>
+            </div>
+            <div class="edu-card fade-up">
+                <div class="edu-school">Northwestern University</div>
+                <div class="edu-degree">M.S. in Project Management, Analytics Concentration</div>
+                <div class="edu-meta">Evanston, IL &middot; 2018 &ndash; 2019 &middot; GPA 3.8/4.0</div>
+                <div class="edu-detail">Graduated with Honors &middot; McCormick School of Engineering<br>ML, Optimization, Regression, Experiment Design, Data Management</div>
+            </div>
+            <div class="edu-card fade-up">
+                <div class="edu-school">East China Univ. of Science &amp; Technology</div>
+                <div class="edu-degree">B.S. in Engineering Management</div>
+                <div class="edu-meta">Shanghai, China</div>
+                <div class="edu-detail">Outstanding Graduation Thesis Award</div>
+            </div>
+            <div class="edu-card fade-up">
+                <div class="edu-school">International School of Management</div>
+                <div class="edu-degree">International Business Certificate</div>
+                <div class="edu-meta">Hamburg, Germany</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-label">Expertise</div>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Fraud Detection &amp; Risk</div>
+                <div class="tags">
+                    <span class="tag">FICO Falcon</span>
+                    <span class="tag">ThreatMetrix</span>
+                    <span class="tag">Pindrop</span>
+                    <span class="tag">Entersekt</span>
+                    <span class="tag">Transaction Monitoring</span>
+                    <span class="tag">Anomaly Detection</span>
+                    <span class="tag">ATO / Synthetic ID</span>
+                    <span class="tag">Mule Networks</span>
+                </div>
+            </div>
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Data Engineering &amp; Analytics</div>
+                <div class="tags">
+                    <span class="tag">SQL</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">SAS</span>
+                    <span class="tag">R</span>
+                    <span class="tag">Stata</span>
+                    <span class="tag">AWS Redshift</span>
+                    <span class="tag">MS SQL Server</span>
+                </div>
+            </div>
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Machine Learning &amp; Statistics</div>
+                <div class="tags">
+                    <span class="tag">Regression</span>
+                    <span class="tag">Classification</span>
+                    <span class="tag">Clustering</span>
+                    <span class="tag">Neural Networks</span>
+                    <span class="tag">A/B Testing</span>
+                    <span class="tag">Risk Segmentation</span>
+                </div>
+            </div>
+            <div class="skill-group fade-up">
+                <div class="skill-group-title">Visualization &amp; Business Tools</div>
+                <div class="tags">
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Hyperion Essbase</span>
+                    <span class="tag">S&amp;P Capital IQ</span>
+                    <span class="tag">JIRA</span>
+                    <span class="tag">Confluence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Research & Teaching -->
+    <section class="section" id="research">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-label">Academic</div>
+                <h2 class="section-title">Research &amp; Teaching</h2>
+            </div>
+        </div>
+        <div class="research-grid">
+            <div class="research-card fade-up">
+                <span class="research-type pub">Publication</span>
+                <div class="research-title">"Does China's Outward Direct Investment Improve the Institutional Quality of Host Countries? Evidence from Countries along the 'One Belt and One Road'"</div>
+                <div class="research-meta">Journal of Shanghai University of International Business and Economics, 2017</div>
+            </div>
+            <div class="research-card fade-up">
+                <span class="research-type teach">Teaching</span>
+                <div class="research-title">Teaching Assistant &mdash; Financial and Managerial Accounting (PROJ_MGT 403)</div>
+                <div class="research-meta">Northwestern University &middot; Fall 2019 &mdash; Supported course instruction and facilitated practical application of accounting concepts.</div>
+            </div>
+            <div class="research-card fade-up">
+                <span class="research-type teach">Teaching</span>
+                <div class="research-title">Teaching Assistant &mdash; Capital Markets (FINC 950)</div>
+                <div class="research-meta">Northwestern University, Kellogg School of Management &middot; Fall 2019 &mdash; Guided MBA student research using Stata, provided statistical support, and evaluated coursework.</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Community -->
+    <section class="section" id="community">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-label">Impact</div>
+                <h2 class="section-title">Community Engagement</h2>
+            </div>
+        </div>
+        <div class="community-grid">
+            <div class="comm-card fade-up">
+                <div class="comm-org">Minds Matter Boston</div>
+                <div class="comm-role">Mentor &middot; 2025 &ndash; Present</div>
+                <div class="comm-desc">Advising first-generation, low-income high school students weekly on college admissions strategy, essay development, test prep, and life skills.</div>
+            </div>
+            <div class="comm-card fade-up">
+                <div class="comm-org">Big Brothers Big Sisters</div>
+                <div class="comm-role">Big Brother Mentor &middot; 2025 &ndash; Present</div>
+                <div class="comm-desc">Providing sustained mentorship, role modeling, and guidance to support children's personal growth and resilience.</div>
+            </div>
+            <div class="comm-card fade-up">
+                <div class="comm-org">Victory Programs</div>
+                <div class="comm-role">Financial Literacy Instructor &middot; 2025</div>
+                <div class="comm-desc">Developed and delivered financial literacy workshops for vulnerable populations, improving financial awareness and money management skills.</div>
+            </div>
+            <div class="comm-card fade-up">
+                <div class="comm-org">Boston Partners in Education</div>
+                <div class="comm-role">Math Tutor &middot; 2025</div>
+                <div class="comm-desc">Individualized math instruction for Boston Public School students, adapting teaching strategies to diverse learning styles.</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Awards -->
+    <section class="section" id="awards">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-label">Recognition</div>
+                <h2 class="section-title">Awards &amp; Honors</h2>
+            </div>
+        </div>
+        <div class="awards-grid">
+            <div class="award-card fade-up">
+                <div class="award-icon">&#9733;</div>
+                <div>
+                    <div class="award-title">Citizens Credo Award</div>
+                    <div class="award-desc">Recognized multiple times by senior leaders across the bank for consistently demonstrating excellence and contributing to organizational success.</div>
+                </div>
+            </div>
+            <div class="award-card fade-up">
+                <div class="award-icon">&#9733;</div>
+                <div>
+                    <div class="award-title">HGSE Scholarship Grant (~40% of Tuition)</div>
+                    <div class="award-desc">Competitive award from Harvard Graduate School of Education reflecting academic merit and potential to advance interests in fraud prevention, financial literacy, and education.</div>
+                </div>
+            </div>
+            <div class="award-card fade-up">
+                <div class="award-icon">&#9733;</div>
+                <div>
+                    <div class="award-title">Certificate of Graduation with Honors</div>
+                    <div class="award-desc">Robert R. McCormick School of Engineering, Northwestern University, 2019.</div>
+                </div>
+            </div>
+            <div class="award-card fade-up">
+                <div class="award-icon">&#9733;</div>
+                <div>
+                    <div class="award-title">Outstanding Graduation Thesis</div>
+                    <div class="award-desc">East China University of Science and Technology, 2018 &mdash; recognized with the Comprehensive Course Scholarship for exceptional research quality.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+        <div class="fade-up">
+            <h2 class="contact-title">Let's work together.</h2>
+            <p class="contact-desc">Open to new opportunities in risk analytics, fraud strategy, data science, and education technology.</p>
+            <div class="contact-actions">
+                <a href="mailto:delu@gse.harvard.edu" class="btn btn-dark">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    delu@gse.harvard.edu
+                </a>
+                <a href="https://www.linkedin.com/in/de-lu/" target="_blank" class="btn btn-ghost">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">&copy; 2026 De Lu. All rights reserved.</div>
+        <div class="footer-links">
+            <a href="mailto:delu@gse.harvard.edu">Email</a>
+            <a href="https://www.linkedin.com/in/de-lu/" target="_blank">LinkedIn</a>
+            <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@3.9.1/tsparticles.slim.bundle.min.js"></script>
+    <script>
+        // Scroll observer for fade-up animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('open');
+            });
+        });
+
+        // Nav scroll state
+        const nav = document.querySelector('.nav');
+        const heroWrapper = document.querySelector('.hero-wrapper');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > heroWrapper.offsetHeight - 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // tsParticles initialization
+        (async () => {
+            await loadSlim(tsParticles);
+            await tsParticles.load({
+                id: "tsparticles",
+                options: {
+                    fullScreen: { enable: false },
+                    fpsLimit: 120,
+                    particles: {
+                        number: {
+                            value: 100,
+                            density: { enable: true, width: 400, height: 400 }
+                        },
+                        color: { value: "#ffffff" },
+                        shape: { type: "circle" },
+                        opacity: {
+                            value: { min: 0.1, max: 0.8 },
+                            animation: {
+                                enable: true,
+                                speed: 1.5,
+                                sync: false,
+                                startValue: "random",
+                                destroy: "none"
+                            }
+                        },
+                        size: {
+                            value: { min: 0.5, max: 2.5 },
+                        },
+                        move: {
+                            enable: true,
+                            speed: { min: 0.2, max: 0.8 },
+                            direction: "none",
+                            outModes: { default: "out" },
+                            straight: false,
+                        },
+                        links: { enable: false },
+                    },
+                    interactivity: {
+                        events: {
+                            onHover: { enable: false },
+                            onClick: { enable: false },
+                        },
+                    },
+                    detectRetina: true,
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>
