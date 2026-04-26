@@ -1661,6 +1661,7 @@
 
         // tsParticles initialization
         (async () => {
+            try {
             await loadSlim(tsParticles);
             await tsParticles.load({
                 id: "tsparticles",
@@ -1705,6 +1706,7 @@
                     detectRetina: true,
                 }
             });
+            } catch(e) {}
         })();
     </script>
 
