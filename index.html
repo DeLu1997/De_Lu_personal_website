@@ -1529,9 +1529,7 @@
             });
         });
 
-    </script>
-    <script>
-        // Language toggle (separate script so errors here can't break page rendering)
+        // Language toggle
         let currentLang = 'en';
         const zhMap = [
             // Nav
@@ -1591,7 +1589,7 @@
             ['.skill-group:nth-child(4) .skill-group-title', '可视化与商务工具'],
             // Research
             ['.research-card:nth-child(1) .research-type', '论文发表'],
-            [“.research-card:nth-child(1) .research-title”, ““中国对外直接投资是否改善了东道国的制度质量？——来自‘一带一路’沿线国家的证据””],
+            [".research-card:nth-child(1) .research-title", `“中国对外直接投资是否改善了东道国的制度质量？——来自‘一带一路’沿线国家的证据”`],
             ['.research-card:nth-child(1) .research-meta', '上海对外经贸大学学报，2017年'],
             ['.research-card:nth-child(2) .research-type', '教学'],
             ['.research-card:nth-child(2) .research-title', '助教 — 财务与管理会计 (PROJ_MGT 403)'],
@@ -1656,6 +1654,8 @@
             });
         }
 
+    </script>
+    <script>
         // Nav scroll state
         const nav = document.querySelector('.nav');
         const heroWrapper = document.querySelector('.hero-wrapper');
