@@ -896,6 +896,38 @@
             }
         }
 
+        /* ─── Lang Toggle ─── */
+        .lang-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.08) !important;
+            border: 1px solid rgba(255,255,255,0.15) !important;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            color: rgba(255,255,255,0.7);
+            transition: all 0.3s;
+            margin-left: 8px;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255,255,255,0.15) !important;
+        }
+
+        .nav.scrolled .lang-toggle {
+            background: var(--tag-bg) !important;
+            border-color: var(--border) !important;
+            color: var(--text-secondary);
+        }
+
+        .nav.scrolled .lang-toggle:hover {
+            border-color: var(--text) !important;
+            color: var(--text);
+        }
+
         /* ─── Footer ─── */
         .footer {
             border-top: 1px solid var(--border);
@@ -1073,6 +1105,7 @@
                 <li><a href="#research">Research</a></li>
                 <li><a href="#community">Community</a></li>
                 <li><a href="#contact" class="nav-cta">Contact Me</a></li>
+                <li><button class="lang-toggle" onclick="toggleLang()">EN / 中</button></li>
             </ul>
         </div>
     </nav>
@@ -1489,6 +1522,131 @@
                 document.querySelector('.nav-links').classList.remove('open');
             });
         });
+
+        // Language toggle
+        let currentLang = 'en';
+        const zhMap = [
+            // Nav
+            ['.nav-links a[href="#experience"]', '经历'],
+            ['.nav-links a[href="#education"]', '教育'],
+            ['.nav-links a[href="#skills"]', '技能'],
+            ['.nav-links a[href="#research"]', '研究'],
+            ['.nav-links a[href="#community"]', '社区'],
+            ['.nav-cta', '联系我'],
+            // Hero
+            ['.hero-title', '金融素养教育，\n反欺诈策略与数据分析。', true],
+            ['.hero-desc', '我是卢德——现居波士顿，曾在芝加哥、达拉斯等美国多个城市以及上海和汉堡生活。作为Citizens金融集团的风险分析经理和哈佛大学硕士研究生，我将全球视野融入所做的一切。'],
+            // Stats
+            ['.stat-item:nth-child(1) .stat-label', '年工作经验'],
+            ['.stat-item:nth-child(2) .stat-label', '学位/院校'],
+            ['.stat-item:nth-child(3) .stat-label', '社区组织'],
+            ['.stat-item:nth-child(4) .stat-label', '全球居住城市'],
+            // Section headers
+            ['#experience .section-label', '职业'],
+            ['#experience .section-title', '工作经历'],
+            ['#education .section-label', '学术'],
+            ['#education .section-title', '教育背景'],
+            ['#skills .section-label', '专业'],
+            ['#skills .section-title', '技术与分析能力'],
+            ['#research .section-label', '学术'],
+            ['#research .section-title', '研究与教学'],
+            ['#community .section-label', '影响'],
+            ['#community .section-title', '社区参与'],
+            ['#awards .section-label', '荣誉'],
+            ['#awards .section-title', '奖项与荣誉'],
+            ['#beyond .section-label', '工作之余'],
+            ['#beyond .section-title', '生活点滴'],
+            // Experience roles
+            ['#experience .exp-card:nth-child(1) .exp-role', '风险分析经理，助理副总裁'],
+            ['#experience .exp-card:nth-child(1) .exp-company', 'Citizens金融集团 — 欺诈策略与分析 — 波士顿'],
+            ['#experience .exp-card:nth-child(2) .exp-role', '高级战略顾问，助理副总裁'],
+            ['#experience .exp-card:nth-child(2) .exp-company', 'Citizens金融集团 — 消费银行战略 — 波士顿'],
+            ['#experience .exp-card:nth-child(3) .exp-role', '高级业务分析师，助理副总裁'],
+            ['#experience .exp-card:nth-child(3) .exp-company', 'Citizens金融集团 — 抵押贷款策略与分析 — 波士顿'],
+            ['#experience .exp-card:nth-child(4) .exp-role', '高级财务分析师'],
+            ['#experience .exp-card:nth-child(4) .exp-company', 'Caliber Home Loans — 企业战略 — 达拉斯'],
+            // Education
+            ['.edu-card:nth-child(1) .edu-degree', '学习设计、创新与技术 硕士'],
+            ['.edu-card:nth-child(1) .edu-detail', 'HGSE优秀奖学金获得者'],
+            ['.edu-card:nth-child(2) .edu-degree', '项目管理硕士，分析方向'],
+            ['.edu-card:nth-child(2) .edu-detail', '荣誉毕业 · 麦考密克工程学院\n机器学习、优化、回归分析、实验设计、数据管理'],
+            ['.edu-card:nth-child(3) .edu-school', '华东理工大学'],
+            ['.edu-card:nth-child(3) .edu-degree', '工程管理 学士'],
+            ['.edu-card:nth-child(3) .edu-meta', '中国上海'],
+            ['.edu-card:nth-child(3) .edu-detail', '优秀毕业论文奖'],
+            ['.edu-card:nth-child(4) .edu-degree', '国际商务证书'],
+            ['.edu-card:nth-child(4) .edu-meta', '德国汉堡'],
+            // Skills group titles
+            ['.skill-group:nth-child(1) .skill-group-title', '欺诈检测与风险'],
+            ['.skill-group:nth-child(2) .skill-group-title', '数据工程与分析'],
+            ['.skill-group:nth-child(3) .skill-group-title', '机器学习与统计'],
+            ['.skill-group:nth-child(4) .skill-group-title', '可视化与商务工具'],
+            // Research
+            ['.research-card:nth-child(1) .research-type', '论文发表'],
+            ['.research-card:nth-child(1) .research-title', '"中国对外直接投资是否改善了东道国的制度质量？——来自'一带一路'沿线国家的证据"'],
+            ['.research-card:nth-child(1) .research-meta', '上海对外经贸大学学报，2017年'],
+            ['.research-card:nth-child(2) .research-type', '教学'],
+            ['.research-card:nth-child(2) .research-title', '助教 — 财务与管理会计 (PROJ_MGT 403)'],
+            ['.research-card:nth-child(2) .research-meta', '西北大学 · 2019年秋季 — 协助课程教学，促进会计概念的实际应用。'],
+            ['.research-card:nth-child(3) .research-type', '教学'],
+            ['.research-card:nth-child(3) .research-title', '助教 — 资本市场 (FINC 950)'],
+            ['.research-card:nth-child(3) .research-meta', '西北大学凯洛格管理学院 · 2019年秋季 — 指导MBA学生使用Stata进行研究，提供统计分析支持并评估课程作业。'],
+            // Community
+            ['.comm-card:nth-child(1) .comm-org', 'Minds Matter 波士顿'],
+            ['.comm-card:nth-child(1) .comm-role', '导师 · 2025至今'],
+            ['.comm-card:nth-child(1) .comm-desc', '每周为第一代低收入高中生提供大学申请策略、文书写作、标准化考试准备和生活技能方面的指导。'],
+            ['.comm-card:nth-child(2) .comm-org', 'Big Brothers Big Sisters'],
+            ['.comm-card:nth-child(2) .comm-role', '大哥哥导师 · 2025至今'],
+            ['.comm-card:nth-child(2) .comm-desc', '提供持续的指导、榜样示范和引导，支持儿童的个人成长和心理韧性。'],
+            ['.comm-card:nth-child(3) .comm-role', '金融素养讲师 · 2025'],
+            ['.comm-card:nth-child(3) .comm-desc', '为弱势群体开发并教授金融素养课程，提升理财意识和实用理财技能。'],
+            ['.comm-card:nth-child(4) .comm-org', '波士顿教育伙伴'],
+            ['.comm-card:nth-child(4) .comm-role', '数学辅导 · 2025'],
+            ['.comm-card:nth-child(4) .comm-desc', '为波士顿公立学校学生提供个性化数学辅导，根据不同学习风格调整教学策略。'],
+            // Awards
+            ['.award-card:nth-child(1) .award-title', 'Citizens信条奖'],
+            ['.award-card:nth-child(1) .award-desc', '多次获得银行高管层的认可，包括欺诈管理部门领导层，以表彰持续卓越的工作表现和对组织成功的贡献。'],
+            ['.award-card:nth-child(2) .award-title', 'HGSE优秀奖学金'],
+            ['.award-card:nth-child(2) .award-desc', '哈佛教育研究生院颁发的竞争性奖学金，表彰学术成就以及在反欺诈、金融素养和教育领域的发展潜力。'],
+            ['.award-card:nth-child(3) .award-title', '荣誉毕业证书'],
+            ['.award-card:nth-child(3) .award-desc', '西北大学罗伯特·R·麦考密克工程与应用科学学院，2019年。'],
+            ['.award-card:nth-child(4) .award-title', '优秀毕业论文'],
+            ['.award-card:nth-child(4) .award-desc', '华东理工大学，2018年——因卓越的研究质量和严谨性获综合课程奖学金。'],
+            // Beyond
+            ['.beyond-group:nth-child(1) .beyond-group-title', '拉花艺术'],
+            ['.beyond-group:nth-child(2) .beyond-group-title', '烹饪与分享美食'],
+            ['.beyond-caption', '工作之余，我热衷于拉花艺术和为朋友们烹饪美食。'],
+            // Contact
+            ['.contact-title', '让我们建立联系。'],
+            ['.contact-desc', '欢迎随时交流反欺诈策略、金融素养教育、数据分析和教育创新方面的想法。'],
+            // Footer
+            ['.footer-links a:last-child', '回到顶部'],
+        ];
+
+        const enCache = {};
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            document.querySelector('.lang-toggle').textContent = currentLang === 'en' ? 'EN / 中' : '中 / EN';
+
+            zhMap.forEach(([sel, zh, isHtml]) => {
+                const el = document.querySelector(sel);
+                if (!el) return;
+                if (currentLang === 'zh') {
+                    if (!enCache[sel]) enCache[sel] = isHtml ? el.innerHTML : el.textContent;
+                    if (isHtml) {
+                        el.innerHTML = zh.replace(/\n/g, '<br>');
+                    } else {
+                        el.textContent = zh;
+                    }
+                } else {
+                    if (enCache[sel]) {
+                        if (isHtml) { el.innerHTML = enCache[sel]; }
+                        else { el.textContent = enCache[sel]; }
+                    }
+                }
+            });
+        }
 
         // Nav scroll state
         const nav = document.querySelector('.nav');
