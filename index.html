@@ -949,6 +949,21 @@
             height: 240px;
         }
 
+        .beyond-grid-1 {
+            grid-template-columns: 1fr;
+        }
+
+        .beyond-grid-1 img {
+            height: 360px;
+        }
+
+        .beyond-group-desc {
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
         .beyond-caption {
             margin-top: 24px;
             font-size: 15px;
@@ -1592,7 +1607,14 @@
                 <img src="cooking0614.jpg" alt="Homemade dish">
             </div>
         </div>
-        <p class="beyond-caption fade-up">When I'm not analyzing data, I'm perfecting latte art and cooking for friends.</p>
+        <div class="beyond-group fade-up">
+            <div class="beyond-group-title">Hosting Monthly Dinners</div>
+            <div class="beyond-grid beyond-grid-1">
+                <img src="monthly-dinner.jpg" alt="Hosting a monthly backyard dinner with a close group of friends">
+            </div>
+            <p class="beyond-group-desc">Once a month, I host a backyard dinner for a close circle of friends. It&rsquo;s less about the food and more about showing up consistently &mdash; I&rsquo;ve learned that the relationships that matter most are built one shared meal at a time.</p>
+        </div>
+        <p class="beyond-caption fade-up">When I'm not analyzing data, I'm perfecting latte art, cooking for friends, and hosting the people I care about.</p>
     </section>
 
     <div class="section-divider"></div>
@@ -1827,7 +1849,9 @@
             // Beyond
             ['.beyond-group:nth-child(1) .beyond-group-title', '拉花艺术'],
             ['.beyond-group:nth-child(2) .beyond-group-title', '烹饪与分享美食'],
-            ['.beyond-caption', '工作之余，我热衷于拉花艺术和为朋友们烹饪美食。'],
+            ['.beyond-group:nth-child(3) .beyond-group-title', '每月聚餐'],
+            ['.beyond-group:nth-child(3) .beyond-group-desc', '我每个月都会在后院为一群亲近的朋友举办聚餐。重点不在于食物本身，而在于持续地为彼此花时间——我渐渐明白，最重要的关系，正是在一次次共享的饭桌上建立起来的。'],
+            ['.beyond-caption', '工作之余，我热衷于拉花艺术、为朋友烹饪美食，也乐于款待我在乎的人。'],
             // Contact
             ['.contact-title', '让我们建立联系。'],
             ['.contact-desc', '欢迎随时交流反欺诈策略、金融素养教育、数据分析和教育创新方面的想法。'],
