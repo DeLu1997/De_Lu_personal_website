@@ -869,6 +869,16 @@
             margin-bottom: 2px;
         }
 
+        .award-title a {
+            text-decoration: underline;
+            text-decoration-color: var(--border);
+            text-underline-offset: 3px;
+        }
+
+        .award-title a:hover {
+            text-decoration-color: var(--text);
+        }
+
         .award-desc {
             font-size: 13px;
             color: var(--text-secondary);
@@ -1656,6 +1666,13 @@
                     <div class="award-desc">East China University of Science and Technology, 2018 &mdash; recognized with the Comprehensive Course Scholarship for exceptional research quality.</div>
                 </div>
             </div>
+            <div class="award-card fade-up">
+                <div class="award-icon">&#9733;</div>
+                <div>
+                    <div class="award-title"><a href="https://hgseeif.hsites.harvard.edu/people/de-lu" target="_blank" rel="noopener">HGSE Equity and Inclusion Fellow</a></div>
+                    <div class="award-desc">Selected for the 2026&ndash;2027 cohort of the Harvard Graduate School of Education Equity and Inclusion Fellows program.</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1846,6 +1863,8 @@
             ['.award-card:nth-child(3) .award-desc', '西北大学罗伯特·R·麦考密克工程与应用科学学院，2019年。'],
             ['.award-card:nth-child(4) .award-title', '优秀毕业论文'],
             ['.award-card:nth-child(4) .award-desc', '华东理工大学，2018年——因卓越的研究质量和严谨性获综合课程奖学金。'],
+            ['.award-card:nth-child(5) .award-title a', '哈佛教育研究生院公平与包容项目学者'],
+            ['.award-card:nth-child(5) .award-desc', '入选哈佛教育研究生院公平与包容学者项目2026–2027届。'],
             // Beyond
             ['.beyond-group:nth-child(1) .beyond-group-title', '拉花艺术'],
             ['.beyond-group:nth-child(2) .beyond-group-title', '烹饪与分享美食'],
