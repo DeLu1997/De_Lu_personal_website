@@ -6,7 +6,7 @@
     <title>De Lu | Financial Literacy, Fraud Strategy &amp; Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:wght@700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -17,21 +17,21 @@
         }
 
         :root {
-            --bg: #ffffff;
-            --text: #0d0c22;
-            --text-secondary: #6e6d7a;
-            --text-tertiary: #9e9ea7;
-            --accent: #0d0c22;
-            --accent-hover: #3d3d4e;
-            --border: #e7e7e9;
-            --card-bg: #f8f8f8;
-            --card-hover: #f1f0f5;
-            --tag-bg: #f3f3f4;
+            --bg: #000000;
+            --text: #ffffff;
+            --text-secondary: rgba(255,255,255,0.66);
+            --text-tertiary: rgba(255,255,255,0.46);
+            --accent: #ffffff;
+            --accent-hover: #d6d6d6;
+            --border: rgba(255,255,255,0.16);
+            --card-bg: #0e0e0e;
+            --card-hover: #181818;
+            --tag-bg: #171717;
             --tag-text: #6e6d7a;
             --pink: #ea4c89;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --radius-xs: 6px;
+            --radius: 2px;
+            --radius-sm: 2px;
+            --radius-xs: 2px;
         }
 
         ::selection {
@@ -575,53 +575,6 @@
             margin-right: auto;
         }
 
-
-        /* ─── Focus pillars ─── */
-        .pillars {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .pillar {
-            border-top: 2px solid var(--text);
-            padding-top: 24px;
-        }
-
-        .pillar-title {
-            font-family: 'Barlow Condensed', 'Inter', sans-serif;
-            font-size: 52px;
-            font-weight: 800;
-            line-height: 1;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .pillar-title .grad {
-            background: linear-gradient(90deg, #5eead4, #60a5fa 55%, #a78bfa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-        }
-
-        .pillar-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .pillar-link {
-            font-size: 14px;
-            font-weight: 600;
-            border-bottom: 1.5px solid var(--text);
-            padding-bottom: 2px;
-        }
-
-        .pillar-link:hover {
-            border-color: transparent;
-        }
 
         /* ─── Key facts ─── */
         .facts {
@@ -1370,11 +1323,6 @@
                 padding-right: 24px;
             }
 
-            .pillars {
-                grid-template-columns: 1fr;
-                gap: 36px;
-            }
-
             .facts {
                 padding: 60px 24px;
             }
@@ -1397,6 +1345,123 @@
             .stat-number {
                 font-size: 28px;
             }
+        }
+
+        /* ═══ Engine-style dark theme ═══ */
+        html { color-scheme: dark; }
+        body { background: #000; color: #fff; }
+        :root { --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; }
+
+        /* nav */
+        .nav.scrolled { background: rgba(0,0,0,0.82); border-bottom-color: rgba(255,255,255,0.14); }
+        .nav.scrolled .nav-logo { color: #fff; }
+        .nav.scrolled .nav-cta { color: #000 !important; }
+        .nav-links a { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+        .nav-cta, .lang-toggle { border-radius: 0 !important; font-family: var(--mono); }
+
+        /* buttons, tags, chips: square, mono */
+        .btn { border-radius: 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 22px; }
+        .btn-dark { color: #000; }
+        .tag { background: #111 !important; border: 1px solid var(--border) !important; border-radius: 0; font-family: var(--mono); font-size: 12px; }
+        .tag:hover { border-color: #fff !important; color: #fff; }
+        .exp-date, .research-type { border-radius: 0; font-family: var(--mono); }
+        .exp-date { font-size: 12px; }
+        .research-type.pub { color: #000; }
+        .award-icon { color: #000; border-radius: 0; }
+
+        /* cards: hairline borders so dark cards read on black */
+        .exp-card, .edu-card, .skill-group, .research-card, .comm-card, .award-card, .harvard-card, .stat-item {
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stats-inner { border-radius: 0; }
+        .hero-photo img { border-radius: 2px; }
+        .section-divider { display: none; }
+
+        /* section headers: white rule + mono label + big condensed title */
+        .section-header { border-top: 2px solid #fff; padding-top: 16px; margin-bottom: 56px; }
+        .section-label { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #fff; margin-bottom: 28px; }
+        .section-title { font-size: 84px; color: #fff; }
+
+        /* hero */
+        .hero-title { font-size: 92px; line-height: 0.94; }
+        .hero-desc { font-size: 22px; line-height: 1.45; font-weight: 500; color: rgba(255,255,255,0.88); max-width: 540px; }
+
+        /* photo strip: square, evenly graded */
+        .strip-group img { border-radius: 0; filter: saturate(0.92) contrast(1.04); }
+
+        /* who I am */
+        .statement-text { font-size: clamp(28px, 3.6vw, 52px); line-height: 1.18; font-weight: 500; letter-spacing: -0.02em; max-width: 1040px; color: #fff; }
+        .gtext {
+            background: linear-gradient(90deg, #5eead4, #60a5fa 55%, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* Protect / Teach / Connect: tall photo columns with caption cards */
+        .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .pillar-title {
+            font-family: 'Barlow Condensed', 'Inter', sans-serif;
+            font-size: clamp(40px, 4.6vw, 64px);
+            font-weight: 800;
+            line-height: 0.95;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+        .pillar-media { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #111; }
+        .pillar-media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.92) contrast(1.04); transition: transform 0.7s ease; }
+        .pillar-media:hover img { transform: scale(1.04); }
+        .pillar-card { position: absolute; left: 12px; right: 12px; bottom: 12px; background: #fff; color: #000; padding: 14px 16px 12px; }
+        .pillar-text { font-size: 14px; line-height: 1.4; font-weight: 500; color: #000; margin: 0 0 10px; }
+        .pillar-link { font-family: var(--mono); font-size: 12px; color: #000; }
+        .pillar-media:hover .pillar-link { text-decoration: underline; }
+
+        /* big serif quote */
+        .quote-section { max-width: 1200px; margin: 0 auto; padding: 110px 40px 40px; }
+        .big-quote {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-weight: 700;
+            font-size: clamp(26px, 3.3vw, 46px);
+            line-height: 1.24;
+            letter-spacing: -0.01em;
+            color: #fff;
+            margin-bottom: 28px;
+        }
+        .quote-by { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary); }
+        .quote-by a { border-bottom: 1px solid rgba(255,255,255,0.4); }
+        .quote-by a:hover { color: #fff; border-color: #fff; }
+
+        /* stats + key facts */
+        .stats-bar { padding-top: 56px; }
+        .stat-item { text-align: left; padding: 28px; }
+        .stat-number { font-family: 'Barlow Condensed', 'Inter', sans-serif; font-size: 64px; font-weight: 800; letter-spacing: 0; line-height: 1; }
+        .stat-label { font-family: var(--mono); font-size: 12px; margin-top: 8px; }
+        .facts { padding: 40px 40px 100px; }
+        .facts-inner { border-top: 2px solid #fff; padding-top: 16px; max-width: 1120px; }
+        .facts-label { font-family: var(--mono); font-weight: 500; letter-spacing: 0.08em; color: #fff; margin-bottom: 40px; }
+        .fact-text { font-family: var(--mono); font-size: 12px; line-height: 1.6; }
+
+        .footer-links a, .footer-text { font-family: var(--mono); font-size: 12px; }
+
+        @media (max-width: 900px) {
+            .nav.scrolled .nav-links { background: rgba(0,0,0,0.96) !important; border-bottom-color: rgba(255,255,255,0.14); }
+            .hero-title { font-size: 72px; }
+            .hero-desc { font-size: 18px; }
+            .section-title { font-size: 56px; }
+            .pillars { grid-template-columns: 1fr; gap: 40px; }
+            .pillar-title { font-size: 64px; }
+            .quote-section { padding: 70px 24px 20px; }
+            .stats-bar { padding-top: 40px; }
+            .stat-number { font-size: 48px; }
+            .facts { padding: 24px 24px 70px; }
+            .fact-number { font-size: 56px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 56px; }
+            .section-title { font-size: 46px; }
         }
     </style>
 </head>
@@ -1467,6 +1532,58 @@
 
     </div><!-- /hero-wrapper -->
 
+    <!-- Who I am -->
+    <section class="section" id="about">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-label">Who I Am</div>
+            </div>
+        </div>
+        <p class="statement-text fade-up">I&rsquo;m a <span class="gtext">fraud strategist</span>, <span class="gtext">financial literacy</span> advocate, and <span class="gtext">learning designer</span>, protecting people from fraud at Citizens Financial Group, studying how people learn at Harvard, and building relationships that outlast any one role.</p>
+    </section>
+
+    <!-- Protect / Teach / Connect -->
+    <section class="section" id="focus">
+        <div class="pillars">
+            <div class="pillar fade-up">
+                <div class="pillar-title">Protect Here</div>
+                <a href="#experience" class="pillar-media">
+                    <img src="cols/protect.jpg" alt="At the ACFE Global Fraud Conference">
+                    <div class="pillar-card">
+                        <p class="pillar-text">I architect real-time fraud detection at Citizens Financial Group, preventing roughly $3&ndash;4M in fraud losses each month for 5M+ U.S. consumers.</p>
+                        <span class="pillar-link">See my experience &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="pillar fade-up">
+                <div class="pillar-title">Teach Here</div>
+                <a href="#harvard" class="pillar-media">
+                    <img src="cols/teach.jpg" alt="With the LDIT cohort at Harvard">
+                    <div class="pillar-card">
+                        <p class="pillar-text">I use learning design to help people recognize financial risks earlier and make more confident financial decisions, from community workshops to my graduate work at HGSE.</p>
+                        <span class="pillar-link">See my Harvard chapter &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="pillar fade-up">
+                <div class="pillar-title">Connect Here</div>
+                <a href="#community" class="pillar-media">
+                    <img src="cols/connect.jpg" alt="Hosting a monthly dinner with friends">
+                    <div class="pillar-card">
+                        <p class="pillar-text">I mentor students and kids, host a monthly dinner for friends, and believe the relationships that matter most are built by showing up consistently.</p>
+                        <span class="pillar-link">See my community work &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <blockquote class="big-quote fade-up">&ldquo;What I learned most is how to build authentic, meaningful relationships. That&rsquo;s even more important nowadays with AI, where everything can seem so transactional. What really helps you are the meaningful relationships that you build.&rdquo;</blockquote>
+        <div class="quote-by fade-up"><a href="https://www.mccormick.northwestern.edu/project-management/inside-our-program/stories/2026/sharing-stories-of-combating-fraud.html" target="_blank" rel="noopener">De Lu, MPM &rsquo;19 &middot; Northwestern Engineering</a></div>
+    </section>
+
     <!-- Stats -->
     <div class="stats-bar fade-up">
         <div class="stats-inner">
@@ -1488,33 +1605,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Focus -->
-    <section class="section" id="focus">
-        <div class="section-header fade-up">
-            <div>
-                <div class="section-label">What I Do</div>
-                <h2 class="section-title">Protect. Teach. Connect.</h2>
-            </div>
-        </div>
-        <div class="pillars">
-            <div class="pillar fade-up">
-                <div class="pillar-title">Protect <span class="grad">Here</span></div>
-                <p class="pillar-text">I architect real-time fraud detection at Citizens Financial Group, preventing roughly $3&ndash;4M in fraud losses each month for 5M+ U.S. consumers.</p>
-                <a href="#experience" class="pillar-link">See my experience &rarr;</a>
-            </div>
-            <div class="pillar fade-up">
-                <div class="pillar-title">Teach <span class="grad">Here</span></div>
-                <p class="pillar-text">I use learning design to help people recognize financial risks earlier and make more confident financial decisions, from community workshops to my graduate work at HGSE.</p>
-                <a href="#harvard" class="pillar-link">See my Harvard chapter &rarr;</a>
-            </div>
-            <div class="pillar fade-up">
-                <div class="pillar-title">Connect <span class="grad">Here</span></div>
-                <p class="pillar-text">I mentor students and kids, host a monthly dinner for friends, and believe the relationships that matter most are built by showing up consistently.</p>
-                <a href="#community" class="pillar-link">See my community work &rarr;</a>
-            </div>
-        </div>
-    </section>
 
     <div class="section-divider"></div>
 
@@ -2034,18 +2124,20 @@
             ['.stat-item:nth-child(2) .stat-label', '学位/院校'],
             ['.stat-item:nth-child(3) .stat-label', '社区组织'],
             ['.stat-item:nth-child(4) .stat-label', '全球居住城市'],
-            // Focus pillars
-            ['#focus .section-label', '我的工作'],
-            ['#focus .section-title', '守护。教育。连接。', false],
-            ['#focus .pillar:nth-child(1) .pillar-title', '在这里<span class="grad">守护</span>', true],
+            // Who I am, pillars, quote
+            ['#about .section-label', '我是谁'],
+            ['.statement-text', '我是一名<span class="gtext">反欺诈策略师</span>、<span class="gtext">金融素养</span>倡导者和<span class="gtext">学习设计师</span>：在Citizens金融集团保护人们免受欺诈，在哈佛研究人们如何学习，并建立比任何一份工作都更长久的关系。', true],
+            ['#focus .pillar:nth-child(1) .pillar-title', '在这里守护'],
             ['#focus .pillar:nth-child(1) .pillar-text', '我在Citizens金融集团设计实时欺诈检测，每月为超过500万美国消费者阻止约300-400万美元的欺诈损失。'],
             ['#focus .pillar:nth-child(1) .pillar-link', '查看我的工作经历 →'],
-            ['#focus .pillar:nth-child(2) .pillar-title', '在这里<span class="grad">教育</span>', true],
+            ['#focus .pillar:nth-child(2) .pillar-title', '在这里教育'],
             ['#focus .pillar:nth-child(2) .pillar-text', '我运用学习设计，帮助人们更早识别财务风险、更有信心地做出财务决策，从社区工作坊到我在哈佛教育研究生院的研究。'],
             ['#focus .pillar:nth-child(2) .pillar-link', '查看我的哈佛之旅 →'],
-            ['#focus .pillar:nth-child(3) .pillar-title', '在这里<span class="grad">连接</span>', true],
+            ['#focus .pillar:nth-child(3) .pillar-title', '在这里连接'],
             ['#focus .pillar:nth-child(3) .pillar-text', '我辅导学生和孩子，每月为朋友举办聚餐，并相信最重要的关系来自持续的陪伴。'],
             ['#focus .pillar:nth-child(3) .pillar-link', '查看我的社区工作 →'],
+            ['.big-quote', '“我学到的最重要的一点，是如何建立真诚而有意义的关系。在人工智能时代，这一点比以往更加重要，因为一切都显得那么交易化。真正帮助你的，是你所建立的那些有意义的关系。”'],
+            ['.quote-by a', '卢德，2019届项目管理硕士 · 西北大学工程学院'],
             // Key facts
             ['.facts-label', '数据一览'],
             ['.facts-grid > div:nth-child(1) .fact-text', '每月阻止的欺诈损失'],
