@@ -6,7 +6,7 @@
     <title>De Lu | Financial Literacy, Fraud Strategy &amp; Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -69,7 +69,7 @@
         /* ─── Nav ─── */
         .nav {
             position: fixed;
-            top: 0;
+            top: 28px;
             left: 0;
             right: 0;
             z-index: 100;
@@ -242,7 +242,7 @@
         .hero {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 140px 40px 100px;
+            padding: 150px 40px 60px;
             display: flex;
             align-items: center;
             gap: 80px;
@@ -277,16 +277,104 @@
         }
 
         .hero-title {
-            font-size: 64px;
+            font-family: 'Barlow Condensed', 'Inter', sans-serif;
+            font-size: 88px;
             font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -2.5px;
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.5px;
             margin-bottom: 24px;
             color: #ffffff;
         }
 
         .hero-title .highlight {
-            color: #ffffff;
+            background: linear-gradient(90deg, #5eead4, #60a5fa 55%, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* ─── Ticker ─── */
+        .ticker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 101;
+            height: 28px;
+            overflow: hidden;
+            background: linear-gradient(90deg, #5eead4, #60a5fa 55%, #a78bfa) !important;
+            color: #04101f;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            line-height: 28px;
+            white-space: nowrap;
+        }
+
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 45s linear infinite;
+        }
+
+        .ticker-group {
+            display: flex;
+        }
+
+        .ticker-group span {
+            padding: 0 14px;
+        }
+
+        .ticker-group span::after {
+            content: '\2022';
+            margin-left: 28px;
+            opacity: 0.6;
+        }
+
+        /* ─── Photo strip ─── */
+        .photo-strip {
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            padding: 20px 0 56px;
+        }
+
+        .strip-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 80s linear infinite;
+        }
+
+        .strip-track:hover,
+        .ticker:hover .ticker-track {
+            animation-play-state: paused;
+        }
+
+        .strip-group {
+            display: flex;
+            gap: 16px;
+            padding-right: 16px;
+        }
+
+        .strip-group img {
+            width: 300px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track, .strip-track { animation: none; }
+            .photo-strip { overflow-x: auto; }
         }
 
         .hero-desc {
@@ -469,10 +557,12 @@
         }
 
         .section-title {
-            font-size: 40px;
+            font-family: 'Barlow Condensed', 'Inter', sans-serif;
+            font-size: 60px;
             font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            line-height: 1;
         }
 
         .section-divider {
@@ -894,9 +984,12 @@
         }
 
         .contact-title {
-            font-size: 48px;
+            font-family: 'Barlow Condensed', 'Inter', sans-serif;
+            text-transform: uppercase;
+            font-size: 80px;
             font-weight: 800;
-            letter-spacing: -2px;
+            letter-spacing: 0;
+            line-height: 1;
             margin-bottom: 16px;
         }
 
@@ -1082,14 +1175,14 @@
         @media (max-width: 900px) {
             .hero {
                 flex-direction: column-reverse;
-                padding: 120px 24px 60px;
+                padding: 130px 24px 40px;
                 gap: 40px;
                 text-align: center;
             }
 
             .hero-title {
-                font-size: 42px;
-                letter-spacing: -1.5px;
+                font-size: 64px;
+                letter-spacing: -0.5px;
             }
 
             .hero-desc {
@@ -1153,7 +1246,7 @@
             }
 
             .section-title {
-                font-size: 32px;
+                font-size: 46px;
             }
 
             .edu-grid,
@@ -1168,7 +1261,7 @@
             }
 
             .contact-title {
-                font-size: 36px;
+                font-size: 56px;
             }
 
             .footer {
@@ -1186,7 +1279,7 @@
 
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 34px;
+                font-size: 52px;
             }
 
             .stat-number {
@@ -1196,6 +1289,14 @@
     </style>
 </head>
 <body>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+            <div class="ticker-group"><span>Harvard Graduate School of Education</span><span>ACFE Insights</span><span>Fast Forward Academy 2026</span><span>Fraud Strategy</span><span>Financial Literacy</span><span>Boston</span></div>
+            <div class="ticker-group"><span>Harvard Graduate School of Education</span><span>ACFE Insights</span><span>Fast Forward Academy 2026</span><span>Fraud Strategy</span><span>Financial Literacy</span><span>Boston</span></div>
+        </div>
+    </div>
 
     <!-- Nav -->
     <nav class="nav">
@@ -1244,6 +1345,13 @@
             <img src="headshot.png" alt="De Lu">
         </div>
     </section>
+
+    <div class="photo-strip">
+        <div class="strip-track">
+            <div class="strip-group"><img src="harvard-ldit-cohort.jpg" alt="De Lu with the LDIT cohort at Harvard" style="object-position:center 40%"><img src="acfe-global-fraud-conference.jpg" alt="At the ACFE Global Fraud Conference" style="object-position:center"><img src="monthly-dinner.jpg" alt="Hosting a monthly dinner with friends" style="object-position:center"><img src="harvard-orientation.jpg" alt="De Lu at the Harvard Graduate School of Education" style="object-position:center 22%"><img src="harvard-evi101.jpg" alt="EDU EVI101 group project presentation" style="object-position:center 30%"><img src="latte1.jpg" alt="Coffee latte art" style="object-position:center"><img src="cooking180.jpg" alt="Homemade dumplings three ways" style="object-position:center"><img src="latte2.jpg" alt="Matcha latte art" style="object-position:center"><img src="cooking183.jpg" alt="Fresh pasta carbonara" style="object-position:center"><img src="latte3.jpg" alt="Coffee latte art" style="object-position:center"><img src="cooking181.jpg" alt="Grilled lamb chop with rice" style="object-position:center"><img src="cooking185.jpg" alt="Crispy dumpling pancake" style="object-position:center"></div>
+            <div class="strip-group" aria-hidden="true"><img src="harvard-ldit-cohort.jpg" alt="" style="object-position:center 40%"><img src="acfe-global-fraud-conference.jpg" alt="" style="object-position:center"><img src="monthly-dinner.jpg" alt="" style="object-position:center"><img src="harvard-orientation.jpg" alt="" style="object-position:center 22%"><img src="harvard-evi101.jpg" alt="" style="object-position:center 30%"><img src="latte1.jpg" alt="" style="object-position:center"><img src="cooking180.jpg" alt="" style="object-position:center"><img src="latte2.jpg" alt="" style="object-position:center"><img src="cooking183.jpg" alt="" style="object-position:center"><img src="latte3.jpg" alt="" style="object-position:center"><img src="cooking181.jpg" alt="" style="object-position:center"><img src="cooking185.jpg" alt="" style="object-position:center"></div>
+        </div>
+    </div>
 
     </div><!-- /hero-wrapper -->
 
@@ -1766,7 +1874,7 @@
             ['.nav-links a[href="#community"]', '社区'],
             ['.nav-cta', '联系我'],
             // Hero
-            ['.hero-title', '金融素养教育，\n反欺诈策略与数据分析。', true],
+            ['.hero-title', '金融素养教育，\n反欺诈策略与<span class="highlight">数据分析。</span>', true],
             ['.hero-desc', '我是卢德，现居波士顿，曾在芝加哥、达拉斯等美国多个城市以及上海和汉堡生活。作为Citizens金融集团的风险分析经理和哈佛大学硕士研究生，我将全球视野融入所做的一切。'],
             // Stats
             ['.stat-item:nth-child(1) .stat-label', '年工作经验'],
@@ -1949,7 +2057,7 @@
         const nav = document.querySelector('.nav');
         const heroWrapper = document.querySelector('.hero-wrapper');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > heroWrapper.offsetHeight - 80) {
+            if (window.scrollY > 40) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
