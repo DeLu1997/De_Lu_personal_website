@@ -1410,13 +1410,9 @@
             color: #fff;
             margin-bottom: 14px;
         }
-        .pillar-media { position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden; background: #111; }
+        .pillar-media { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #111; }
         .pillar-media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.92) contrast(1.04); transition: transform 0.7s ease; }
         .pillar-media:hover img { transform: scale(1.04); }
-        .pillar-card { position: absolute; left: 12px; right: 12px; bottom: 12px; background: #fff; color: #000; padding: 14px 16px 12px; }
-        .pillar-text { font-size: 13px; line-height: 1.4; font-weight: 500; color: #000; margin: 0 0 10px; }
-        .pillar-link { font-family: var(--mono); font-size: 12px; color: #000; }
-        .pillar-media:hover .pillar-link { text-decoration: underline; }
 
         /* big serif quote */
         .quote-section { max-width: 1200px; margin: 0 auto; padding: 110px 40px 40px; }
@@ -1447,7 +1443,6 @@
 
         @media (max-width: 1100px) {
             .pillars { grid-template-columns: repeat(2, 1fr); gap: 40px 16px; }
-            .pillar-media { aspect-ratio: 3 / 4; }
             .pillar-title { font-size: clamp(40px, 6vw, 56px); }
         }
 
@@ -1553,42 +1548,26 @@
         <div class="pillars">
             <div class="pillar fade-up">
                 <div class="pillar-title">Build Here</div>
-                <a href="#harvard" class="pillar-media">
+                <a href="#harvard" class="pillar-media" aria-label="Build Here: my founder chapter">
                     <img src="cols/build.jpg" alt="With the Fast Forward Academy 2026 cohort">
-                    <div class="pillar-card">
-                        <p class="pillar-text">One of 17 founders chosen from about 300 applicants to Fast Forward Academy 2026. I&rsquo;m building Money Moves: one simple weekly money move from your real spending.</p>
-                        <span class="pillar-link">See my founder chapter &rarr;</span>
-                    </div>
                 </a>
             </div>
             <div class="pillar fade-up">
                 <div class="pillar-title">Protect Here</div>
-                <a href="#experience" class="pillar-media">
+                <a href="#experience" class="pillar-media" aria-label="Protect Here: my experience">
                     <img src="cols/protect.jpg" alt="At the ACFE Global Fraud Conference">
-                    <div class="pillar-card">
-                        <p class="pillar-text">I architect real-time fraud detection at Citizens, preventing roughly $3&ndash;4M in fraud losses each month.</p>
-                        <span class="pillar-link">See my experience &rarr;</span>
-                    </div>
                 </a>
             </div>
             <div class="pillar fade-up">
                 <div class="pillar-title">Teach Here</div>
-                <a href="#harvard" class="pillar-media">
+                <a href="#harvard" class="pillar-media" aria-label="Teach Here: my Harvard chapter">
                     <img src="cols/teach.jpg" alt="With the LDIT cohort at Harvard">
-                    <div class="pillar-card">
-                        <p class="pillar-text">I use learning design to help people recognize financial risks earlier and make more confident decisions.</p>
-                        <span class="pillar-link">See my Harvard chapter &rarr;</span>
-                    </div>
                 </a>
             </div>
             <div class="pillar fade-up">
                 <div class="pillar-title">Connect Here</div>
-                <a href="#community" class="pillar-media">
+                <a href="#community" class="pillar-media" aria-label="Connect Here: my community work">
                     <img src="cols/connect.jpg" alt="Hosting a monthly dinner with friends">
-                    <div class="pillar-card">
-                        <p class="pillar-text">I mentor students and kids, host a monthly dinner, and show up consistently for the people who matter.</p>
-                        <span class="pillar-link">See my community work &rarr;</span>
-                    </div>
                 </a>
             </div>
         </div>
@@ -2144,17 +2123,9 @@
             ['#about .section-label', '我是谁'],
             ['.statement-text', '我是一名<span class="gtext">反欺诈策略师</span>、<span class="gtext">金融素养</span>倡导者和<span class="gtext">学习设计师</span>：在Citizens金融集团保护人们免受欺诈，在哈佛研究人们如何学习，作为Fast Forward Academy创始人打造Money Moves，并建立比任何一份工作都更长久的关系。', true],
             ['#focus .pillar:nth-child(2) .pillar-title', '在这里守护'],
-            ['#focus .pillar:nth-child(2) .pillar-text', '我在Citizens设计实时欺诈检测，每月阻止约300-400万美元的欺诈损失。'],
-            ['#focus .pillar:nth-child(2) .pillar-link', '查看我的工作经历 →'],
             ['#focus .pillar:nth-child(3) .pillar-title', '在这里教育'],
-            ['#focus .pillar:nth-child(3) .pillar-text', '我运用学习设计，帮助人们更早识别财务风险，更有信心地做出决策。'],
-            ['#focus .pillar:nth-child(3) .pillar-link', '查看我的哈佛之旅 →'],
             ['#focus .pillar:nth-child(1) .pillar-title', '在这里构建'],
-            ['#focus .pillar:nth-child(1) .pillar-text', '我从约300名申请者中入选Fast Forward Academy 2026的17位创始人，正在打造Money Moves：根据真实消费行为，每周给出一个简单的理财行动。'],
-            ['#focus .pillar:nth-child(1) .pillar-link', '查看我的创业之旅 →'],
             ['#focus .pillar:nth-child(4) .pillar-title', '在这里连接'],
-            ['#focus .pillar:nth-child(4) .pillar-text', '我辅导学生和孩子，每月举办聚餐，并持续陪伴身边重要的人。'],
-            ['#focus .pillar:nth-child(4) .pillar-link', '查看我的社区工作 →'],
             ['.big-quote', '“我学到的最重要的一点，是如何建立真诚而有意义的关系。在人工智能时代，这一点比以往更加重要，因为一切都显得那么交易化。真正帮助你的，是你所建立的那些有意义的关系。”'],
             ['.quote-by a', '卢德，2019届项目管理硕士 · 西北大学工程学院'],
             // Key facts
