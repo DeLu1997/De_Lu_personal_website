@@ -1400,21 +1400,21 @@
         }
 
         /* Protect / Teach / Connect: tall photo columns with caption cards */
-        .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
         .pillar-title {
             font-family: 'Barlow Condensed', 'Inter', sans-serif;
-            font-size: clamp(40px, 4.6vw, 64px);
+            font-size: clamp(30px, 3.3vw, 46px);
             font-weight: 800;
             line-height: 0.95;
             text-transform: uppercase;
             color: #fff;
             margin-bottom: 14px;
         }
-        .pillar-media { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #111; }
+        .pillar-media { position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden; background: #111; }
         .pillar-media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.92) contrast(1.04); transition: transform 0.7s ease; }
         .pillar-media:hover img { transform: scale(1.04); }
         .pillar-card { position: absolute; left: 12px; right: 12px; bottom: 12px; background: #fff; color: #000; padding: 14px 16px 12px; }
-        .pillar-text { font-size: 14px; line-height: 1.4; font-weight: 500; color: #000; margin: 0 0 10px; }
+        .pillar-text { font-size: 13px; line-height: 1.4; font-weight: 500; color: #000; margin: 0 0 10px; }
         .pillar-link { font-family: var(--mono); font-size: 12px; color: #000; }
         .pillar-media:hover .pillar-link { text-decoration: underline; }
 
@@ -1444,6 +1444,12 @@
         .fact-text { font-family: var(--mono); font-size: 12px; line-height: 1.6; }
 
         .footer-links a, .footer-text { font-family: var(--mono); font-size: 12px; }
+
+        @media (max-width: 1100px) {
+            .pillars { grid-template-columns: repeat(2, 1fr); gap: 40px 16px; }
+            .pillar-media { aspect-ratio: 3 / 4; }
+            .pillar-title { font-size: clamp(40px, 6vw, 56px); }
+        }
 
         @media (max-width: 900px) {
             .nav.scrolled .nav-links { background: rgba(0,0,0,0.96) !important; border-bottom-color: rgba(255,255,255,0.14); }
@@ -1525,8 +1531,8 @@
 
     <div class="photo-strip">
         <div class="strip-track">
-            <div class="strip-group"><img src="strip/harvard-orientation.jpg" alt="De Lu at the Harvard Graduate School of Education"><img src="strip/life-widener.jpg" alt="Friends in front of Widener Library"><img src="strip/harvard-ldit-cohort.jpg" alt="De Lu with the LDIT cohort at Harvard"><img src="strip/life-ffwd.jpg" alt="At the ffwd academy 2026 kickoff"><img src="strip/life-dinner-2.jpg" alt="Dinner with friends"><img src="strip/acfe-global-fraud-conference.jpg" alt="At the ACFE Global Fraud Conference"><img src="strip/life-harvard-club.jpg" alt="Speaking at the Harvard Club of Boston"><img src="strip/life-class.jpg" alt="Class selfie with classmates and instructor"><img src="strip/life-mahjong.jpg" alt="Mahjong night with friends"><img src="strip/life-rain.jpg" alt="Sharing a blazer in the rain"><img src="strip/harvard-evi101.jpg" alt="EDU EVI101 group project presentation"><img src="strip/life-japan-1.jpg" alt="Japan night with a sushi chef"><img src="strip/life-table.jpg" alt="Dinner with friends"><img src="strip/life-takeoff.jpg" alt="HGSE cohort takeoff"><img src="strip/monthly-dinner.jpg" alt="Hosting a monthly dinner with friends"><img src="strip/life-workshop.jpg" alt="At a maker workshop with a sticky-note tree"><img src="strip/life-harvard-square.jpg" alt="Harvard Square with a new friend"><img src="strip/life-friends.jpg" alt="Lunch with friends"><img src="strip/life-harbor.jpg" alt="Evening harbor cruise"><img src="strip/life-event.jpg" alt="At an event with friends"><img src="strip/life-japan-2.jpg" alt="Japan night group photo"><img src="strip/life-lawn.jpg" alt="Autumn on campus"><img src="strip/life-gathering.jpg" alt="Evening gathering with friends"><img src="strip/life-boat.jpg" alt="Night on the water"><img src="strip/life-hilab.jpg" alt="Biking past Harvard Innovation Labs"><img src="strip/life-dinner.jpg" alt="Dinner with friends"></div>
-            <div class="strip-group" aria-hidden="true"><img src="strip/harvard-orientation.jpg" alt=""><img src="strip/life-widener.jpg" alt=""><img src="strip/harvard-ldit-cohort.jpg" alt=""><img src="strip/life-ffwd.jpg" alt=""><img src="strip/life-dinner-2.jpg" alt=""><img src="strip/acfe-global-fraud-conference.jpg" alt=""><img src="strip/life-harvard-club.jpg" alt=""><img src="strip/life-class.jpg" alt=""><img src="strip/life-mahjong.jpg" alt=""><img src="strip/life-rain.jpg" alt=""><img src="strip/harvard-evi101.jpg" alt=""><img src="strip/life-japan-1.jpg" alt=""><img src="strip/life-table.jpg" alt=""><img src="strip/life-takeoff.jpg" alt=""><img src="strip/monthly-dinner.jpg" alt=""><img src="strip/life-workshop.jpg" alt=""><img src="strip/life-harvard-square.jpg" alt=""><img src="strip/life-friends.jpg" alt=""><img src="strip/life-harbor.jpg" alt=""><img src="strip/life-event.jpg" alt=""><img src="strip/life-japan-2.jpg" alt=""><img src="strip/life-lawn.jpg" alt=""><img src="strip/life-gathering.jpg" alt=""><img src="strip/life-boat.jpg" alt=""><img src="strip/life-hilab.jpg" alt=""><img src="strip/life-dinner.jpg" alt=""></div>
+            <div class="strip-group"><img src="strip/harvard-orientation.jpg" alt="De Lu at the Harvard Graduate School of Education"><img src="strip/life-widener.jpg" alt="Friends in front of Widener Library"><img src="strip/harvard-ldit-cohort.jpg" alt="De Lu with the LDIT cohort at Harvard"><img src="strip/life-ffwd.jpg" alt="At the ffwd academy 2026 kickoff"><img src="strip/life-ffwd-group-1.jpg" alt="Fast Forward Academy 2026 cohort, group photo"><img src="strip/life-ffwd-group-2.jpg" alt="Fast Forward Academy 2026 cohort, outdoor group photo"><img src="strip/life-dinner-2.jpg" alt="Dinner with friends"><img src="strip/acfe-global-fraud-conference.jpg" alt="At the ACFE Global Fraud Conference"><img src="strip/life-harvard-club.jpg" alt="Speaking at the Harvard Club of Boston"><img src="strip/life-class.jpg" alt="Class selfie with classmates and instructor"><img src="strip/life-mahjong.jpg" alt="Mahjong night with friends"><img src="strip/life-rain.jpg" alt="Sharing a blazer in the rain"><img src="strip/harvard-evi101.jpg" alt="EDU EVI101 group project presentation"><img src="strip/life-japan-1.jpg" alt="Japan night with a sushi chef"><img src="strip/life-table.jpg" alt="Dinner with friends"><img src="strip/life-takeoff.jpg" alt="HGSE cohort takeoff"><img src="strip/monthly-dinner.jpg" alt="Hosting a monthly dinner with friends"><img src="strip/life-workshop.jpg" alt="At a maker workshop with a sticky-note tree"><img src="strip/life-harvard-square.jpg" alt="Harvard Square with a new friend"><img src="strip/life-friends.jpg" alt="Lunch with friends"><img src="strip/life-harbor.jpg" alt="Evening harbor cruise"><img src="strip/life-event.jpg" alt="At an event with friends"><img src="strip/life-japan-2.jpg" alt="Japan night group photo"><img src="strip/life-lawn.jpg" alt="Autumn on campus"><img src="strip/life-gathering.jpg" alt="Evening gathering with friends"><img src="strip/life-boat.jpg" alt="Night on the water"><img src="strip/life-hilab.jpg" alt="Biking past Harvard Innovation Labs"><img src="strip/life-dinner.jpg" alt="Dinner with friends"></div>
+            <div class="strip-group" aria-hidden="true"><img src="strip/harvard-orientation.jpg" alt=""><img src="strip/life-widener.jpg" alt=""><img src="strip/harvard-ldit-cohort.jpg" alt=""><img src="strip/life-ffwd.jpg" alt=""><img src="strip/life-ffwd-group-1.jpg" alt=""><img src="strip/life-ffwd-group-2.jpg" alt=""><img src="strip/life-dinner-2.jpg" alt=""><img src="strip/acfe-global-fraud-conference.jpg" alt=""><img src="strip/life-harvard-club.jpg" alt=""><img src="strip/life-class.jpg" alt=""><img src="strip/life-mahjong.jpg" alt=""><img src="strip/life-rain.jpg" alt=""><img src="strip/harvard-evi101.jpg" alt=""><img src="strip/life-japan-1.jpg" alt=""><img src="strip/life-table.jpg" alt=""><img src="strip/life-takeoff.jpg" alt=""><img src="strip/monthly-dinner.jpg" alt=""><img src="strip/life-workshop.jpg" alt=""><img src="strip/life-harvard-square.jpg" alt=""><img src="strip/life-friends.jpg" alt=""><img src="strip/life-harbor.jpg" alt=""><img src="strip/life-event.jpg" alt=""><img src="strip/life-japan-2.jpg" alt=""><img src="strip/life-lawn.jpg" alt=""><img src="strip/life-gathering.jpg" alt=""><img src="strip/life-boat.jpg" alt=""><img src="strip/life-hilab.jpg" alt=""><img src="strip/life-dinner.jpg" alt=""></div>
         </div>
     </div>
 
@@ -1539,7 +1545,7 @@
                 <div class="section-label">Who I Am</div>
             </div>
         </div>
-        <p class="statement-text fade-up">I&rsquo;m a <span class="gtext">fraud strategist</span>, <span class="gtext">financial literacy</span> advocate, and <span class="gtext">learning designer</span>, protecting people from fraud at Citizens Financial Group, studying how people learn at Harvard, and building relationships that outlast any one role.</p>
+        <p class="statement-text fade-up">I&rsquo;m a <span class="gtext">fraud strategist</span>, <span class="gtext">financial literacy</span> advocate, and <span class="gtext">learning designer</span>, protecting people from fraud at Citizens Financial Group, studying how people learn at Harvard, building AI tools as a Fast Forward Academy founder, and building relationships that outlast any one role.</p>
     </section>
 
     <!-- Protect / Teach / Connect -->
@@ -1550,7 +1556,7 @@
                 <a href="#experience" class="pillar-media">
                     <img src="cols/protect.jpg" alt="At the ACFE Global Fraud Conference">
                     <div class="pillar-card">
-                        <p class="pillar-text">I architect real-time fraud detection at Citizens Financial Group, preventing roughly $3&ndash;4M in fraud losses each month for 5M+ U.S. consumers.</p>
+                        <p class="pillar-text">I architect real-time fraud detection at Citizens, preventing roughly $3&ndash;4M in fraud losses each month.</p>
                         <span class="pillar-link">See my experience &rarr;</span>
                     </div>
                 </a>
@@ -1560,8 +1566,18 @@
                 <a href="#harvard" class="pillar-media">
                     <img src="cols/teach.jpg" alt="With the LDIT cohort at Harvard">
                     <div class="pillar-card">
-                        <p class="pillar-text">I use learning design to help people recognize financial risks earlier and make more confident financial decisions, from community workshops to my graduate work at HGSE.</p>
+                        <p class="pillar-text">I use learning design to help people recognize financial risks earlier and make more confident decisions.</p>
                         <span class="pillar-link">See my Harvard chapter &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="pillar fade-up">
+                <div class="pillar-title">Build Here</div>
+                <a href="#harvard" class="pillar-media">
+                    <img src="cols/build.jpg" alt="With the Fast Forward Academy 2026 cohort">
+                    <div class="pillar-card">
+                        <p class="pillar-text">I&rsquo;m one of 17 founders in Fast Forward Academy 2026, building AI tools for workforce development and economic empowerment.</p>
+                        <span class="pillar-link">See my founder chapter &rarr;</span>
                     </div>
                 </a>
             </div>
@@ -1570,7 +1586,7 @@
                 <a href="#community" class="pillar-media">
                     <img src="cols/connect.jpg" alt="Hosting a monthly dinner with friends">
                     <div class="pillar-card">
-                        <p class="pillar-text">I mentor students and kids, host a monthly dinner for friends, and believe the relationships that matter most are built by showing up consistently.</p>
+                        <p class="pillar-text">I mentor students and kids, host a monthly dinner, and show up consistently for the people who matter.</p>
                         <span class="pillar-link">See my community work &rarr;</span>
                     </div>
                 </a>
@@ -2126,16 +2142,19 @@
             ['.stat-item:nth-child(4) .stat-label', '全球居住城市'],
             // Who I am, pillars, quote
             ['#about .section-label', '我是谁'],
-            ['.statement-text', '我是一名<span class="gtext">反欺诈策略师</span>、<span class="gtext">金融素养</span>倡导者和<span class="gtext">学习设计师</span>：在Citizens金融集团保护人们免受欺诈，在哈佛研究人们如何学习，并建立比任何一份工作都更长久的关系。', true],
+            ['.statement-text', '我是一名<span class="gtext">反欺诈策略师</span>、<span class="gtext">金融素养</span>倡导者和<span class="gtext">学习设计师</span>：在Citizens金融集团保护人们免受欺诈，在哈佛研究人们如何学习，作为Fast Forward Academy创始人打造人工智能工具，并建立比任何一份工作都更长久的关系。', true],
             ['#focus .pillar:nth-child(1) .pillar-title', '在这里守护'],
-            ['#focus .pillar:nth-child(1) .pillar-text', '我在Citizens金融集团设计实时欺诈检测，每月为超过500万美国消费者阻止约300-400万美元的欺诈损失。'],
+            ['#focus .pillar:nth-child(1) .pillar-text', '我在Citizens设计实时欺诈检测，每月阻止约300-400万美元的欺诈损失。'],
             ['#focus .pillar:nth-child(1) .pillar-link', '查看我的工作经历 →'],
             ['#focus .pillar:nth-child(2) .pillar-title', '在这里教育'],
-            ['#focus .pillar:nth-child(2) .pillar-text', '我运用学习设计，帮助人们更早识别财务风险、更有信心地做出财务决策，从社区工作坊到我在哈佛教育研究生院的研究。'],
+            ['#focus .pillar:nth-child(2) .pillar-text', '我运用学习设计，帮助人们更早识别财务风险，更有信心地做出决策。'],
             ['#focus .pillar:nth-child(2) .pillar-link', '查看我的哈佛之旅 →'],
-            ['#focus .pillar:nth-child(3) .pillar-title', '在这里连接'],
-            ['#focus .pillar:nth-child(3) .pillar-text', '我辅导学生和孩子，每月为朋友举办聚餐，并相信最重要的关系来自持续的陪伴。'],
-            ['#focus .pillar:nth-child(3) .pillar-link', '查看我的社区工作 →'],
+            ['#focus .pillar:nth-child(3) .pillar-title', '在这里构建'],
+            ['#focus .pillar:nth-child(3) .pillar-text', '我是Fast Forward Academy 2026的17位创始人之一，正在为劳动力发展与经济赋能打造人工智能工具。'],
+            ['#focus .pillar:nth-child(3) .pillar-link', '查看我的创业之旅 →'],
+            ['#focus .pillar:nth-child(4) .pillar-title', '在这里连接'],
+            ['#focus .pillar:nth-child(4) .pillar-text', '我辅导学生和孩子，每月举办聚餐，并持续陪伴身边重要的人。'],
+            ['#focus .pillar:nth-child(4) .pillar-link', '查看我的社区工作 →'],
             ['.big-quote', '“我学到的最重要的一点，是如何建立真诚而有意义的关系。在人工智能时代，这一点比以往更加重要，因为一切都显得那么交易化。真正帮助你的，是你所建立的那些有意义的关系。”'],
             ['.quote-by a', '卢德，2019届项目管理硕士 · 西北大学工程学院'],
             // Key facts
