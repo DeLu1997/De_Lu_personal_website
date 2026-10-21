@@ -1400,10 +1400,10 @@
         }
 
         /* Protect / Teach / Connect: tall photo columns with caption cards */
-        .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .pillar-title {
             font-family: 'Barlow Condensed', 'Inter', sans-serif;
-            font-size: clamp(30px, 3.3vw, 46px);
+            font-size: clamp(36px, 4.4vw, 58px);
             font-weight: 800;
             line-height: 0.95;
             text-transform: uppercase;
@@ -1440,11 +1440,6 @@
         .fact-text { font-family: var(--mono); font-size: 12px; line-height: 1.6; }
 
         .footer-links a, .footer-text { font-family: var(--mono); font-size: 12px; }
-
-        @media (max-width: 1100px) {
-            .pillars { grid-template-columns: repeat(2, 1fr); gap: 40px 16px; }
-            .pillar-title { font-size: clamp(40px, 6vw, 56px); }
-        }
 
         @media (max-width: 900px) {
             .nav.scrolled .nav-links { background: rgba(0,0,0,0.96) !important; border-bottom-color: rgba(255,255,255,0.14); }
@@ -1562,12 +1557,6 @@
                 <div class="pillar-title">Teach Here</div>
                 <a href="#harvard" class="pillar-media" aria-label="Teach Here: my Harvard chapter">
                     <img src="cols/teach.jpg" alt="With the LDIT cohort at Harvard">
-                </a>
-            </div>
-            <div class="pillar fade-up">
-                <div class="pillar-title">Connect Here</div>
-                <a href="#community" class="pillar-media" aria-label="Connect Here: my community work">
-                    <img src="cols/connect.jpg" alt="Hosting a monthly dinner with friends">
                 </a>
             </div>
         </div>
@@ -2125,7 +2114,6 @@
             ['#focus .pillar:nth-child(2) .pillar-title', '在这里守护'],
             ['#focus .pillar:nth-child(3) .pillar-title', '在这里教育'],
             ['#focus .pillar:nth-child(1) .pillar-title', '在这里构建'],
-            ['#focus .pillar:nth-child(4) .pillar-title', '在这里连接'],
             ['.big-quote', '“我学到的最重要的一点，是如何建立真诚而有意义的关系。在人工智能时代，这一点比以往更加重要，因为一切都显得那么交易化。真正帮助你的，是你所建立的那些有意义的关系。”'],
             ['.quote-by a', '卢德，2019届项目管理硕士 · 西北大学工程学院'],
             // Key facts
