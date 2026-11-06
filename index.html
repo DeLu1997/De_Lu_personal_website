@@ -1105,6 +1105,14 @@
             height: 240px;
         }
 
+        .beyond-grid-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .beyond-grid-5 img {
+            height: 280px;
+        }
+
         .beyond-grid-1 {
             grid-template-columns: 1fr;
         }
@@ -1137,8 +1145,13 @@
                 height: 240px;
             }
 
-            .beyond-grid-4 {
+            .beyond-grid-4,
+            .beyond-grid-5 {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .beyond-grid-5 img:last-child {
+                grid-column: 1 / -1;
             }
         }
 
@@ -1968,9 +1981,11 @@
         </div>
         <div class="beyond-group fade-up">
             <div class="beyond-group-title">Latte Art</div>
-            <div class="beyond-grid">
+            <div class="beyond-grid beyond-grid-5">
                 <img src="latte1.jpg" alt="Coffee latte art">
                 <img src="latte2.jpg" alt="Matcha latte art">
+                <img src="latte5.jpg" alt="De Lu holding a matcha latte with heart latte art" style="object-position:center 18%">
+                <img src="latte4.jpg" alt="Matcha latte with heart latte art" style="object-position:55% center">
                 <img src="latte3.jpg" alt="Coffee latte art">
             </div>
         </div>
